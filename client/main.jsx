@@ -3,9 +3,9 @@ import {Meteor} from 'meteor/meteor';
 import {render} from 'react-dom';
 import {Router,Route,Link,browserHistory,IndexRoute} from 'react-router';
 
+import './accounts-config.js';
 import App from './component/App.jsx';
 import LoginPage from './component/LoginPage.jsx';
-import './accounts-config.js';
 
 Meteor.startup(()=>{
 	render((
