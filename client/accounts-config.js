@@ -1,5 +1,14 @@
-import {Accounts} from 'meteor/accounts-base';
+import {AccountsTemplates} from 'meteor/useraccounts:core';
 
-Accounts.ui.config({
-  passwordSignupFields:'USERNAME_ONLY'
-})
+let pwd = AccountsTemplates.removeField('password');
+AccountsTemplates.removeField('email');
+AccountsTemplates.addFields([
+  {
+    _id:"username",
+    type:"text",
+    displayName:"username",
+    required:true,
+    minLength:5
+  },
+  pwd
+]);

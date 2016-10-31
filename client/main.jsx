@@ -6,13 +6,14 @@ import {Router,Route,Link,browserHistory,IndexRoute} from 'react-router';
 import './accounts-config.js';
 import App from './component/App.jsx';
 import LoginPage from './component/LoginPage.jsx';
+import Camera from './component/Camera.jsx';
 
 Meteor.startup(()=>{
 	render((
 		<Router history={browserHistory}>
 			<Route path="/" component={App}>
-				<IndexRoute component={LoginPage}/>
-				<Route path="game" component={LoginPage}/>
+				<IndexRoute component={Camera}/>
+				<Route path="login" component={LoginPage}/>
 			</Route>
 		</Router>
 	),document.getElementById('render-target'));
