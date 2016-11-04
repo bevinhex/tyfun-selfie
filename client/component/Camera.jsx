@@ -11,14 +11,10 @@ export default class LoginPage extends Component{
   }
   componentDidMount(){
     Webcam.set({
-      width:320,
-      height:240,
-      dest_width:640,
-      dest_height:480,
       image_format:'jpeg',
       jpeg_quality:90
     });
-    Webcam.attach('#webcam');
+    Webcam.attach('#preview');
   }
   take(){
     Webcam.snap((image)=>{
@@ -27,7 +23,7 @@ export default class LoginPage extends Component{
   }
 	render(){
 		return(
-      <div>
+      <div className="camera">
         <div id="preview"></div>
         <CameraToolbar/>
       </div>
