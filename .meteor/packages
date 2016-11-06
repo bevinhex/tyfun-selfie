@@ -26,3 +26,5 @@ useraccounts:bootstrap
 accounts-ui-unstyled
 mdg:camera
 benjick:webcam
+session
+nerdmed:camanjs

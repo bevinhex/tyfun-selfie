@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import CameraToolbar from './CameraToolbar.jsx';
+import {browserHistory} from 'react-router';
+import {Session} from 'meteor/session';
 
 export default class LoginPage extends Component{
   constructor(){
     super();
     this.state={
-      image : ''
+      image :null
     }
   }
   componentDidMount(){
@@ -16,16 +17,24 @@ export default class LoginPage extends Component{
     });
     Webcam.attach('#preview');
   }
-  take(){
+  componentWillUnmount(){
+    Webcam.reset();
+  }
+  takePicture(){
     Webcam.snap((image)=>{
-      this.setState({image:image});
+      Session.set('image',image);
+      browserHistory.push('edit');
     })
   }
 	render(){
 		return(
       <div className="camera">
         <div id="preview"></div>
-        <CameraToolbar/>
+        <div id="footer">
+          <button type="button" id="takePicture" onClick={this.takePicture.bind(this)} className="btn btn-default center-block">
+            <span className="glyphicon glyphicon-camera"></span>
+          </button>
+        </div>
       </div>
 		);
 	}

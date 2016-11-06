@@ -6,9 +6,14 @@
   },
   "dependencies": {
     "bcrypt": "^0.8.7",
+    "caman": "^4.1.2",
+    "canvas": "^1.6.2",
+    "fibers": "^1.0.15",
+    "ftscroller": "^0.7.0",
     "meteor-node-stubs": "~0.2.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "react-router": "^2.8.1"
+    "react-router": "^2.8.1",
+    "react-router-transition": "0.0.6"
   }
 }
