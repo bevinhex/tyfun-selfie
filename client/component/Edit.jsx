@@ -4,6 +4,7 @@ import {Session} from 'meteor/session';
 import {browserHistory} from 'react-router';
 
 import FilterPanel from './Filter.jsx';
+import {Images} from '../../api/collections.js';
 
 export default class EditPage extends Component{
   constructor(){
@@ -13,13 +14,27 @@ export default class EditPage extends Component{
     }
   }
   componentDidMount(){
-    let caman = Caman("#picture");
+    this.setState({
+      image:Session.get('image')
+    });
+    let caman = Caman("#picture",function(){
+      //const w = this.image.width;
+      //const h = this.image.height;
+      //console.log(w + ':' + h );
+      //this.crop(w,w,0,(h-w)/2);
+      //this.render();
+    });
     this.setState({
       caman:caman,
-      image:Session.get('image')
     });
   }
   save(){
+    let data = this.state.caman.toBase64('jpg');
+    Images.insert({
+      rating:0,
+      data:data,
+      createdAt:new Date()
+    });
     browserHistory.push('camera');
   }
   cancel(){

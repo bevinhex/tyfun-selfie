@@ -13,7 +13,9 @@ export default class LoginPage extends Component{
   componentDidMount(){
     Webcam.set({
       image_format:'jpeg',
-      jpeg_quality:90
+      jpeg_quality:90,
+      crop_width:300,
+      crop_height:300,
     });
     Webcam.attach('#preview');
   }
