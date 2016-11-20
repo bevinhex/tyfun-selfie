@@ -11,11 +11,27 @@ export default class LoginPage extends Component{
     }
   }
   componentDidMount(){
+    Webcam.on('live',function(){
+      $('video').on('loadeddata',function(){
+        const w = this.videoWidth;
+        const h = this.videoHeight;
+        Webcam.set('dest_width',w);
+        Webcam.set('dest_height',h);
+        Webcam.set('crop_width',w);
+        Webcam.set('crop_height',w);
+        console.log(Webcam.params);
+      });
+    });
+    //simple hack: give '100%' in order to ignore those value
     Webcam.set({
       image_format:'jpeg',
       jpeg_quality:90,
-      crop_width:300,
-      crop_height:300,
+      //dest_width:720,
+      //dest_height:1280,
+      //crop_width:720,
+      //crop_height:720,
+      //width:'100%',
+      //height:'100%',
     });
     Webcam.attach('#preview');
   }
@@ -24,6 +40,7 @@ export default class LoginPage extends Component{
   }
   takePicture(){
     Webcam.snap((image)=>{
+      console.log(image);
       Session.set('image',image);
       browserHistory.push('edit');
     })

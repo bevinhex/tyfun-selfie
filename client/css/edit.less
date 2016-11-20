@@ -1,6 +1,8 @@
 .edit{
   width:100vw;
   height:100vh;
+  display:flex;
+  flex-flow:column;
 
   #picture{
     width:100vw;
@@ -8,9 +10,11 @@
     display:inline-block;
   }
   #footer{
-    display:inline-block;
     bottom:0px;
     width:100vw;
-    height:auto;
+    flex:1;
+
+    display:flex;
+    flex-flow:column;
   }
 }

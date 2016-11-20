@@ -37,13 +37,14 @@ export default class FilterPanel extends Component{
       scrollingY:false,
       baseAlignments:{x:0,y:0}
     });
+    //this.refs.panel.style.height = '100px';
   }
 	render(){
     let buttons = this.state.filters.map((name)=>{
       return(
         <button type="button" data-filter={name} key={name} onClick={this.props.onSelect} className="btn btn-default">
           <img src={'filters/'+name+'.png'}/>
-          {name}
+          <span className="title">{name}</span>
         </button>
       );
     });
@@ -52,7 +53,6 @@ export default class FilterPanel extends Component{
         <div className="btn-group" role="group">
           {buttons}
         </div>
-        <h1>FilterPanel</h1>
       </div>
 		);
 	}
