@@ -31,6 +31,7 @@ export default class EditPage extends Component{
   save(){
     let data = this.state.caman.toBase64('jpg');
     Images.insert({
+      owner:Meteor.userId(),
       rating:0,
       data:data,
       createdAt:new Date()
