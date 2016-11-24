@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {browserHistory} from 'react-router';
 import {Session} from 'meteor/session';
 
-export default class LoginPage extends Component{
+export default class CameraPage extends Component{
   constructor(){
     super();
     this.state={
