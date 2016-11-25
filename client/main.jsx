@@ -8,7 +8,7 @@ import App from './component/App.jsx';
 import LoginPage from './component/LoginPage.jsx';
 import CameraPage from './component/Camera.jsx';
 import EditPage from './component/Edit.jsx';
-import PopularMonth from './component/PopularMonth.jsx'
+import PopularPage from './component/PopularMonth.jsx'
 
 const requireAuth = function(nextState,replace){
 	console.log(nextState,replace);
@@ -20,10 +20,11 @@ Meteor.startup(()=>{
 	render((
 		<Router history={browserHistory}>
 			<Route path="/" component={App}>
-				<IndexRoute component={PopularMonth} onEnter={requireAuth}/>
+				<IndexRoute component={PopularPage} onEnter={requireAuth}/>
 				<Route path="login" component={LoginPage}/>
 				<Route path="camera" component={CameraPage} onEnter={requireAuth}/>
 				<Route path="edit" component={EditPage} onEnter={requireAuth}/>
+				<Route path="edit" component={PopularPage} onEnter={requireAuth}/>
 			</Route>
 		</Router>
 	),document.getElementById('render-target'));

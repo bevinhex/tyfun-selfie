@@ -4,6 +4,7 @@ import {browserHistory} from 'react-router';
 import ReactList from 'react-list';
 
 import UserHList from './UserHList.jsx';
+import Footer from './Footer.jsx';
 
 export default class PopularMonth extends Component{
   constructor(){
@@ -16,7 +17,7 @@ export default class PopularMonth extends Component{
   componentWillUnmount(){
   }
   renderItem(index,key){
-    return <UserHList key={key}/>
+    return <UserHList key={key} index={index}/>
   }
 	render(){
 		return(
@@ -27,11 +28,12 @@ export default class PopularMonth extends Component{
           itemRenderer={this.renderItem}
           length={1000}
           pageSize={10}
-          type='uniform'
+          type='simple'
           useTranslate3d={true}
           useStaticSize={true}
         />
       </div>
+      <Footer/>
       </div>
 		);
 	}

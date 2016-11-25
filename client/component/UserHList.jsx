@@ -16,7 +16,7 @@ export default class UserHList extends Component{
 	render(){
 		return(
       <div className="userhlist">
-        <div className="rating">1</div>
+        <div className="rating">{this.props.index}</div>
         <div className="avatar item">
           <img src={faker.image.imageUrl(64,64,'people')}/>
         </div>
