@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {browserHistory} from 'react-router';
 import ReactList from 'react-list';
-//import Faker from 'faker';
+
+import UserHList from './UserHList.jsx';
 
 export default class PopularMonth extends Component{
   constructor(){
@@ -15,30 +16,22 @@ export default class PopularMonth extends Component{
   componentWillUnmount(){
   }
   renderItem(index,key){
-    function delay(ms) {
-        var cur_d = new Date();
-        var cur_ticks = cur_d.getTime();
-        var ms_passed = 0;
-        while(ms_passed < ms) {
-            var d = new Date();  // Possible memory leak?
-            var ticks = d.getTime();
-            ms_passed = ticks - cur_ticks;
-            // d = null;  // Prevent memory leak?
-        }
-    }
-    delay(30);
-    return <div key={key}>{faker.name.findName()}</div>;
+    return <UserHList key={key}/>
   }
 	render(){
 		return(
-      <div style={{overflow:'auto',maxHeight:document.documentElement.clientHeight}}>
+      <div className="popular">
+        <div className="header">Popular of the month</div>
+      <div style={{overflowY:'auto',maxHeight:document.documentElement.clientHeight-40}}>
         <ReactList
           itemRenderer={this.renderItem}
           length={1000}
-          pageSize={3}
+          pageSize={10}
           type='uniform'
-          userTranslate3d={true}
+          useTranslate3d={true}
+          useStaticSize={true}
         />
+      </div>
       </div>
 		);
 	}
