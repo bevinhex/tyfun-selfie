@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import {Session} from 'meteor/session';
-import {FTScroller} from 'ftscroller';
+import ReactList from 'react-list';
 
 export default class FilterPanel extends Component{
   constructor(){
@@ -32,26 +30,35 @@ export default class FilterPanel extends Component{
     }
   }
   componentDidMount(){
-    new FTScroller(this.refs.panel,{
+    /*new FTScroller(this.refs.panel,{
       scrollbars:false,
       scrollingY:false,
       baseAlignments:{x:0,y:0}
-    });
+    });*/
     //this.refs.panel.style.height = '100px';
   }
+  renderItem(index,key){
+    const name = this.state.filters[index];
+    return(
+      <div className="item" data-filter={name} key={key} onClick={this.props.onSelect}/* className="btn btn-default"*/>
+        <img src={'filters/'+name+'.png'}/>
+        <div className="title">{name}</div>
+      </div>
+    );
+  }
 	render(){
-    let buttons = this.state.filters.map((name)=>{
-      return(
-        <button type="button" data-filter={name} key={name} onClick={this.props.onSelect} className="btn btn-default">
-          <img src={'filters/'+name+'.png'}/>
-          <span className="title">{name}</span>
-        </button>
-      );
-    });
 		return(
-      <div className="filterPanel" ref="panel">
-        <div className="btn-group" role="group">
-          {buttons}
+      <div className="filterPanel">
+        <div className="list">
+        <ReactList
+          itemRenderer={this.renderItem.bind(this)}
+          axis='x'
+          length={19}
+          pageSize={10}
+          type='uniform'
+          useTranslate3d={true}
+          useStaticSize={true}
+        />
         </div>
       </div>
 		);

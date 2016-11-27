@@ -31,21 +31,21 @@ export default class EditPage extends Component{
   save(){
     let data = this.state.caman.toBase64('jpg');
     Images.insert({
-      owner:Meteor.userId(),
-      rating:0,
-      data:data,
-      createdAt:new Date()
+      data:data
     });
-    browserHistory.push('camera');
+    browserHistory.push('grid');
   }
   cancel(){
-    browserHistory.push('camera');
+    browserHistory.push('grid');
   }
   tint(e){
     let caman = this.state.caman;
-    let filter = e.target.dataset.filter;
+    let filter = e.currentTarget.dataset.filter;
     caman.revert(false);
-    caman[filter]();
+    if(filter!='normal')
+    {
+      caman[filter]();
+    }
     caman.render();
   }
 	render(){

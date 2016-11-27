@@ -1,36 +1,33 @@
 .filterPanel{
-  overflow:hidden;
   flex:1;
-
-  .ftscroller_container,.ftscroller_x{
+  div{
     height:100%;
   }
-  .btn-group{
-    white-space: nowrap;
-    height: 100%;
-
-    .btn{
-      float:none;
-      height:100%;
-      overflow:hidden;
-      margin:4px;
-      padding:0px;
-      
-      img{
-        height:100%;
-        left: 50%;
-        position: inherit;
-        transform: translate(-50%,0);
-      }
-    }
+  .list{
+    overflow-x:auto;
+    height:100%;
   }
-  .title{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    text-shadow: 0px 0px 5px blue;
-    font-size:20px;
-    font-weight:bold;
+  .item{
+    width:141px;
+    display:inline-block;
+    position:relative;
+    overflow:hidden;
+    border:1px solid black;
+    img{
+      top: 50%;
+      position: absolute;
+      transform: translateY(-50%);
+    }
+    .title{
+      top:50%;
+      left:50%;
+      position: absolute;
+      transform:translate(-50%,-50%);
+      height:auto;
+      font-size:20px;
+      font-weight: bold;
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #6e00ff, 0 0 70px #6e00ff, 0 0 80px #6e00ff, 0 0 100px #6e00ff, 0 0 150px #6e00ff;
+      color:#6e00ff;
+    }
   }
 }

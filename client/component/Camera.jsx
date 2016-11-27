@@ -40,7 +40,6 @@ export default class CameraPage extends Component{
   }
   takePicture(){
     Webcam.snap((image)=>{
-      console.log(image);
       Session.set('image',image);
       browserHistory.push('edit');
     })
